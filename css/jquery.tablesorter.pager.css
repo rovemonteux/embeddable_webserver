@@ -1,0 +1,24 @@
+div.pager {
+	padding: 10px 0 10px 0;
+	text-align: center;
+	margin-top: -5px;
+}
+div.pager span {
+	padding: 0 5px 0 5px;
+}
+div.pager input.prev {
+	width: auto;
+	margin-right: 10px;
+}
+div.pager input.next {
+	width: auto;
+	margin-left: 10px;
+}
+div.pager input {
+	width: 50px;
+	/*border: 1px solid #330000;*/
+	text-align: center;
+}
+
+
+  

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640, maximum-scale=1.0" />
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link rel="stylesheet" href="/css/app.min.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/tablesorter.css">
+<link rel="stylesheet" href="/css/jquery.tablesorter.pager.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript" src="/js/jquery.metadata.js"></script>
+<script type="text/javascript">
+var matched, browser;
+
+jQuery.uaMatch = function( ua ) {
+    ua = ua.toLowerCase();
+
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+        /(msie)[\s?]([\w.]+)/.exec( ua ) ||       
+        /(trident)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+        ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) ||
+        [];
+
+    return {
+        browser: match[ 1 ] || "",
+        version: match[ 2 ] || "0"
+    };
+};
+
+matched = jQuery.uaMatch( navigator.userAgent );
+matched.browser = matched.browser == 'trident' ? 'msie' : matched.browser;
+browser = {};
+
+if ( matched.browser ) {
+    browser[ matched.browser ] = true;
+    browser.version = matched.version;
+}
+
+if ( browser.chrome ) {
+    browser.webkit = true;
+} else if ( browser.webkit ) {
+    browser.safari = true;
+}
+
+jQuery.browser = browser;
+</script>
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+        $("#indexTable").tablesorter({widthFixed: false}).tablesorterPager({container: $("#pager")}); 
+    } 
+); 
+</script>
+<script type="text/javascript">
+$('a').click(function(ev){
+    ev.preventDefault();
+    var target='#terminal-input';
+    var url=$(this).attr('href');
+    $(target).load(url+' '+target);
+}
+</script>

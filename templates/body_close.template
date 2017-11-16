@@ -1,0 +1,11 @@
+</div>
+<div class="footerwrapper">
+<form id="search-form" action="/search" class="internal" data-target="#terminal-input">
+    <div class="search">
+      <input type="text" name="search" class="round" />
+      <input type="submit" class="corner" value="Search" />
+    </div>
+</form>
+</div>
+</body>
+</html>
